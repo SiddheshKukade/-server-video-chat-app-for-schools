@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "sid": "nodemon src/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -12,6 +13,7 @@
   "dependencies": {
     "express": "^4.17.1",
     "mongoose": "^5.12.5",
+    "nodemon": "^2.0.7",
     "validator": "^13.5.2"
   }
 }
