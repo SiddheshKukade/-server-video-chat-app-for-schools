@@ -1,0 +1,1 @@
+mongodb+srv://sid123:<password>@cluster0.kzbro.mongodb.net/myFirstDatabase?retryWrites=true&w=majority

@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const Ranking = require("../models/participantSchema");
+
 router.get("/", (req, res) => {
   res.send("heloo connection lest goo");
 });
