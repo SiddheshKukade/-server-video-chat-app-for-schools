@@ -14,7 +14,7 @@ app.use(express.json());
 app.use(router);
 // setting port
 const PORT = process.env.PORT || 6969;
-
+console.log("hi");
 app.listen(PORT, () => {
   console.log(`server is up and running at ${PORT}`);
 });
