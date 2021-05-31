@@ -20,7 +20,6 @@ const schoolSchema = new Schema({
   },
   standards: {
     type: Array,
-
     required: true,
   },
   subjects: {
