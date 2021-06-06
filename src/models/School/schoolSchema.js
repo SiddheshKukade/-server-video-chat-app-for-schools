@@ -26,6 +26,14 @@ const schoolSchema = new Schema({
     type: Array,
     required: true,
   },
+  createdAt: {
+    type: Date,
+    required: true,
+  },
+  updatedAt: {
+    type: Date,
+    required: true,
+  },
 });
 
 const School = new mongoose.model("School", schoolSchema);

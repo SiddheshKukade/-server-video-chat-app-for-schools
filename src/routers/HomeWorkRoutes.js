@@ -5,4 +5,8 @@ HomeWorkRouter.post("/homeWork", (req, res) => {
   //saves it in database
   // SIDDHESH Bhupendra Kuakde
 });
+
+HomeWorkRouter.post("/getHomeWork", (req , res)=>{
+  //takes school Id  and send homwwork posts
+})
 module.exports = HomeWorkRouter;

@@ -24,28 +24,34 @@ const userSchema = new Schema({
   },
   fathername: {
     type: String,
-    required: true,
     trim: true,
   },
   dob: {
     type: Date,
-    required: true,
   },
   standard: {
     type: Number,
-    required: true,
     trim: true,
   },
   address: {
     type: String,
-    required: true,
     trim: true,
   },
   phoneNo: {
     type: Number,
-    required: true,
     trim: true,
   },
+  googleLogin: {
+    required:true,
+    type: Boolean,
+  },
+  createdAt: {
+type: Date,
+    },
+  updatedAt : {
+type: Date,
+required: true,
+  }
 });
 // creating a new collection
 const Users = new mongoose.model("Users", userSchema);

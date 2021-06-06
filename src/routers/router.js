@@ -5,7 +5,9 @@ const Ranking = require("../models/participantSchema");
 router.get("/", (req, res) => {
   res.send("heloo connection lest goo");
 });
-
+router.post("/somedataa", (req, res) => {
+ console.log("somedata is ==> ", req.body);
+});
 router.post("/players", async (req, res) => {
   try {
     const newRecord = new Ranking(req.body);
@@ -32,6 +34,7 @@ router.get("/player/:pname", async (req, res) => {
     const result = await Ranking.find({ name: req.params.pname });
     // const result = await Ranking.findBKyId({ _id: req.params.pno });
     res.send(result);
+    x;
   } catch (error) {
     res.send(error);
   }
