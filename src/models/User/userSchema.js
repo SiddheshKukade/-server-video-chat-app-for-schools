@@ -45,7 +45,7 @@ const userSchema = new Schema({
     required: true,
     type: Boolean,
   },
-  referCpde: {
+  referCode: {
     required: true,
     type: String,
   },

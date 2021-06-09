@@ -30,7 +30,7 @@ CreateAccountRouter.post("/school", async (req, res) => {
     if (result.referCode) {
       res.status(201).send({ alreadyExists: true });
     } else {
-      res.status(201).send({ alreadyExists: false });
+      // res.status(201).send({ alreadyExists: false });
       const newRecord = new School(req.body);
       console.log("Storing School", req.body);
       const resSchool = await newRecord.save();
@@ -41,11 +41,20 @@ CreateAccountRouter.post("/school", async (req, res) => {
   }
 });
 CreateAccountRouter.post("/newUser", (req, res) => {
+
+   try {
+    const result = await School.find({ referCode: req.body.referCode });
+    console.log("Searching school  ", req.body);
+    if (result.referCode) {
+      res.status(201).send({ alreadyExists: true });
+    } else {
   const newRecord = new User(req.body);
   console.log("new User", req.body);
   const resStudent = await newRecord.save();
-  res.status(201).send(resStudent);
-  //store new user
+  res.status(201).send(resStudent);}}
+   catch (err) {
+    res.status(400).send(err);
+  }
 });
 
 //when a teacher is trying to login to a School
