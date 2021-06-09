@@ -42,16 +42,20 @@ const userSchema = new Schema({
     trim: true,
   },
   googleLogin: {
-    required:true,
+    required: true,
     type: Boolean,
   },
+  referCpde: {
+    required: true,
+    type: String,
+  },
   createdAt: {
-type: Date,
-    },
-  updatedAt : {
-type: Date,
-required: true,
-  }
+    type: Date,
+  },
+  updatedAt: {
+    type: Date,
+    required: true,
+  },
 });
 // creating a new collection
 const Users = new mongoose.model("Users", userSchema);

@@ -14,6 +14,7 @@ const schoolSchema = new Schema({
     required: true,
     trim: true,
   },
+  //array of Objects [{tmail , sub} ,{tmail2 , sub2} ,... ]
   teacherMails: {
     type: Array,
     required: true,
@@ -24,6 +25,10 @@ const schoolSchema = new Schema({
   },
   subjects: {
     type: Array,
+    required: true,
+  },
+  referCode: {
+    type: String,
     required: true,
   },
   createdAt: {
