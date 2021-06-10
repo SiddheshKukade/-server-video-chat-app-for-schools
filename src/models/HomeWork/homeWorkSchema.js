@@ -27,16 +27,17 @@ const homeworkSchema = new Schema({
   },
   name: {
     type: String,
-    required: true,
+    required: true,   
     unique: true,
   },
   marks: {
     type: Number,
   },
+
   dueDate: {
     type: Date,
   },
-});
+ });
 
 const HomeWork = new mongoose.model("Homework", homeworkSchema);
 module.exports = HomeWork;

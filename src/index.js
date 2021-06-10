@@ -13,6 +13,9 @@ const User = require("./models/User/userSchema");
 const School = require("./models/School/schoolSchema");
 const LoginRouter = require("./routers/LoginRoutes");
 const CreateAccountRouter = require("./routers/CreateAccountRoutes")
+const DashboardRouter = require("./routers/DashboardRoutes")
+const StudyMaterialRouter = require("./routers/StudyMaterialRoutes")
+const HomeWorkRouter  = require("./routers/HomeWorkRoutes")
 const cors = require("cors")
 // middlewares
 app.use(express.json());
@@ -20,6 +23,9 @@ app.use(cors())
 app.use(router);
 app.use(CreateAccountRouter);
 app.use(LoginRouter);
+app.use(DashboardRouter);
+app.use(HomeWorkRouter)
+app.use(StudyMaterialRouter)
 // setting port
 const PORT = process.env.PORT || 6969;
 

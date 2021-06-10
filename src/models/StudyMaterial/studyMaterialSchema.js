@@ -34,6 +34,7 @@ const studyMaterialSchema = new Schema({
     type: Number,
     required: true,
   },
+ 
 });
 
 const StudyMaterial = new mongoose.model("StudyMaterial", studyMaterialSchema);

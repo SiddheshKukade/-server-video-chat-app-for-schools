@@ -7,6 +7,12 @@ HomeWorkRouter.post("/homeWork", (req, res) => {
 });
 
 HomeWorkRouter.post("/getHomeWork", (req , res)=>{
+  try{
+const result  = = await HomeWork.find({fromSchool : req.body.fromSchool})
+res.status(200).send({homeWorkPosts : result});
+  }catch(err){
+    res.status(400).send(err)
+  }
   //takes school Id  and send homwwork posts
 })
 module.exports = HomeWorkRouter;
