@@ -53,7 +53,7 @@ module.exports = function getModelsMapForPopulate(model, docs, options) {
     }
     // Populating a nested path should always be a no-op re: #9073.
     // People shouldn't do this, but apparently they do.
-    if (modelSchema.nested[options.path]) {
+    if (options._localModel != null && options._localModel.schema.nested[options.path]) {
       continue;
     }
     const isUnderneathDocArray = schema && schema.$isUnderneathDocArray;
@@ -409,7 +409,7 @@ module.exports = function getModelsMapForPopulate(model, docs, options) {
       if (!schema && discriminatorKey && (discriminatorValue = utils.getValue(discriminatorKey, doc))) {
         // `modelNameForFind` is the discriminator value, so we might need
         // find the discriminated model name
-        const discriminatorModel = getDiscriminatorByValue(model, discriminatorValue) || model;
+        const discriminatorModel = getDiscriminatorByValue(model.discriminators, discriminatorValue) || model;
         if (discriminatorModel != null) {
           modelForCurrentDoc = discriminatorModel;
         } else {
@@ -512,7 +512,7 @@ function convertTo_id(val, schema) {
       }
     }
     if (val.isMongooseArray && val.$schema()) {
-      return val.$schema().cast(val, val.$parent());
+      return val.$schema()._castForPopulate(val, val.$parent());
     }
 
     return [].concat(val);

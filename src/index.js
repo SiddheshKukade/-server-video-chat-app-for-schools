@@ -2,7 +2,7 @@ require("dotenv").config();
 const express = require("express");
 require("./db/connection");
 const app = express();
-
+const upload = require("express-fileupload");
 const Ranking = require("./models/participantSchema");
 const router = require("./routers/router");
 const HomeWork = require("./models/HomeWork/homeWorkSchema");
@@ -19,6 +19,7 @@ const HomeWorkRouter  = require("./routers/HomeWorkRoutes")
 const cors = require("cors")
 // middlewares
 app.use(express.json());
+app.use(upload());
 app.use(cors())
 app.use(router);
 app.use(CreateAccountRouter);

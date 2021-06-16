@@ -7,12 +7,12 @@ const studyMaterialSchema = new Schema({
     type: Date,
     required: true,
   },
-  fromSchool: {
+  fromSchoolRef: {
     type: String,
     required: true,
     trim: true,
   },
-  fromTeacher: {
+  fromTeacherMail: {
     required: true,
     type: String,
     trim: true,
@@ -34,6 +34,14 @@ const studyMaterialSchema = new Schema({
     type: Number,
     required: true,
   },
+  createdAt {
+    type: Date , 
+    required: true,
+      }
+   updatedAt {
+    type: Date , 
+    required: true,
+      }
  
 });
 
