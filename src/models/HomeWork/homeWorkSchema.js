@@ -3,16 +3,20 @@ const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
 const homeworkSchema = new Schema({
+  title: {
+    required: true,
+    type: String,
+  },
   postedAt: {
     type: Date,
     required: true,
   },
-  fromSchool: {
+  fromSchoolRef: {
     type: String,
     required: true,
     trim: true,
   },
-  fromTeacher: {
+  fromTeacherMail: {
     required: true,
     type: String,
     trim: true,
@@ -25,19 +29,19 @@ const homeworkSchema = new Schema({
     type: Number,
     required: true,
   },
-  name: {
-    type: String,
-    required: true,   
-    unique: true,
-  },
+
   marks: {
     type: Number,
+  },
+  emailWhoSubmitted: {
+    type: Array,
+    required: true,
   },
 
   dueDate: {
     type: Date,
   },
- });
+});
 
 const HomeWork = new mongoose.model("Homework", homeworkSchema);
 module.exports = HomeWork;
