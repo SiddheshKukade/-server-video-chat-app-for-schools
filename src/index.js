@@ -12,21 +12,26 @@ const StudyMaterial = require("./models/StudyMaterial/studyMaterialSchema");
 const User = require("./models/User/userSchema");
 const School = require("./models/School/schoolSchema");
 const LoginRouter = require("./routers/LoginRoutes");
-const CreateAccountRouter = require("./routers/CreateAccountRoutes")
-const DashboardRouter = require("./routers/DashboardRoutes")
-const StudyMaterialRouter = require("./routers/StudyMaterialRoutes")
-const HomeWorkRouter  = require("./routers/HomeWorkRoutes")
-const cors = require("cors")
+const CreateAccountRouter = require("./routers/CreateAccountRoutes");
+const DashboardRouter = require("./routers/DashboardRoutes");
+const StudyMaterialRouter = require("./routers/StudyMaterialRoutes");
+const HomeWorkRouter = require("./routers/HomeWorkRoutes");
+const cors = require("cors");
+const bodyParser = require("body-parser");
+
 // middlewares
-app.use(express.json());
+// app.use(bodyParser.urlencoded({ extended: true }));
+// app.use(bodyParser.json());
+app.use(express.json({ extended: false }));
 app.use(upload());
-app.use(cors())
-app.use(router);
-app.use(CreateAccountRouter);
-app.use(LoginRouter);
-app.use(DashboardRouter);
-app.use(HomeWorkRouter)
-app.use(StudyMaterialRouter)
+app.use(cors({ origin: true, credentials: true }));
+// app.use(cors());
+// app.use(router);
+app.use("/signup", CreateAccountRouter);
+app.use("/login", LoginRouter);
+app.use("/dashboard", DashboardRouter);
+app.use("/homework", HomeWorkRouter);
+app.use("/studymaterial", StudyMaterialRouter);
 // setting port
 const PORT = process.env.PORT || 6969;
 
@@ -38,3 +43,4 @@ app.listen(PORT, () => {
 // const mongoose = require("mongoose");
 // var id = mongoose.Types.ObjectId();
 // console.log(id);
+console.log("🍏 ", process.env.__MONGO_URI_PROJECT__);

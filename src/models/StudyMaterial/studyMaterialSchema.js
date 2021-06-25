@@ -34,14 +34,14 @@ const studyMaterialSchema = new Schema({
     type: Number,
     required: true,
   },
-  createdAt {
+  createdAt :{
     type: Date , 
     required: true,
-      }
-   updatedAt {
+      },
+   updatedAt : {
     type: Date , 
     required: true,
-      }
+      },
  
 });
 

@@ -1,5 +1,5 @@
 const express = require("express");
-const DashboardRouter = express.router();
+const DashboardRouter = express.Router();
 const Users = require("../models/User/userSchema");
 DashboardRouter.get("/userDash", async(req, res) => {
   const mails  = req.body.teachersMailsOnly;
@@ -13,8 +13,8 @@ DashboardRouter.get("/userDash", async(req, res) => {
   }
   mails.map(mail=>{
     try {
-     const res = await Users.find({email : mail})
-    names.push(res.name);
+      Users.find({email : mail}).then(res=> names.push(res.name))
+    // names.push(res.name);
 
     }
     catch(err){console.log(err)}

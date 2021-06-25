@@ -1,8 +1,8 @@
 const fs = require("fs");
 const express = require("express");
 const HomeWork = require("../models/HomeWork/homeWorkSchema");
-const HomeWorkRouter = express.router();
-HomeWorkRouter.post("/addHomeWork", (req, res) => {
+const HomeWorkRouter = express.Router();
+HomeWorkRouter.post("/addHomeWork",async (req, res) => {
   //takes homework task
   try {
     const newRecord = new HomeWork(req.body);
@@ -28,7 +28,7 @@ try {
   // SIDDHESH Bhupendra Kuakde
 });
 
-HomeWorkRouter.post("/getHomeWork", (req, res) => {
+HomeWorkRouter.post("/getHomeWork",async (req, res) => {
   try {
     const result = await HomeWork.find({ fromSchool: req.body.fromSchool });
     res.status(200).send({ homeWorkPosts: result });
@@ -56,7 +56,7 @@ HomeWorkRouter.post("/addHomeWorkStudent", async (req, res)=>{
  let file = req.body.file
  let filename = req.body.file.name
  let schoolRefCode = req.body.schoolRefCode
- let title = = req.body.title
+ let title = req.body.title
    file.mv(`./uploads/${schoolRefCode}/${title.replace(/\s/g, '')}` + filename, (err) => {
 
       if (err) {

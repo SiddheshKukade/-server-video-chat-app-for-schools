@@ -1,14 +1,14 @@
 const express = require("express");
-const StudyMaterialRouter = express.router();
+const StudyMaterialRouter = express.Router();
 const fs = require("fs");
 const StudyMaterial = require("../models/StudyMaterial/studyMaterialSchema")
 StudyMaterialRouter.post("/studyMaterial", (req, res) => {
   //Input -> Takes all the Studt Material <Data></Data>
   //Output --> Saves them all in db and return if operation was sucessful or not.
 });
-StudyMaterialRouter.post("/getStudyMaterial",  (req, res)=>{
+StudyMaterialRouter.post("/getStudyMaterial", async (req, res)=>{
    try{
-const result  = = await StudyMaterial.find({fromSchool : req.body.fromSchool})
+const result  =  await StudyMaterial.find({fromSchool : req.body.fromSchool})
 res.status(200).send({studyMaterialPosts : result});
   }catch(err){
     res.status(400).send(err)
@@ -31,7 +31,7 @@ StudyMaterialRouter.post("/uploadStudyMaterial" , (req ,res)=>{
           console.log("File has been uploaded sucessfully. ");
         }
       });
-  }
+  }}
   catch(err){
 
   }
