@@ -26,7 +26,7 @@ app.use(express.json({ extended: false }));
 app.use(upload());
 app.use(cors({ origin: true, credentials: true }));
 // app.use(cors());
-// app.use(router);
+app.use(router);
 app.use("/signup", CreateAccountRouter);
 app.use("/login", LoginRouter);
 app.use("/dashboard", DashboardRouter);
@@ -43,4 +43,3 @@ app.listen(PORT, () => {
 // const mongoose = require("mongoose");
 // var id = mongoose.Types.ObjectId();
 // console.log(id);
-console.log("🍏 ", process.env.__MONGO_URI_PROJECT__);
