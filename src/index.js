@@ -2,7 +2,6 @@ require("dotenv").config();
 const express = require("express");
 require("./db/connection");
 const app = express();
-const upload = require("express-fileupload");
 const Ranking = require("./models/participantSchema");
 const router = require("./routers/router");
 const HomeWork = require("./models/HomeWork/homeWorkSchema");
@@ -18,12 +17,12 @@ const StudyMaterialRouter = require("./routers/StudyMaterialRoutes");
 const HomeWorkRouter = require("./routers/HomeWorkRoutes");
 const cors = require("cors");
 const bodyParser = require("body-parser");
-
+// const upload = require("express-fileupload");
 // middlewares
-// app.use(bodyParser.urlencoded({ extended: true }));
-// app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 app.use(express.json({ extended: false }));
-app.use(upload());
+// app.use(upload());
 app.use(cors({ origin: true, credentials: true }));
 // app.use(cors());
 app.use(router);
