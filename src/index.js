@@ -15,10 +15,12 @@ const CreateAccountRouter = require("./routers/CreateAccountRoutes");
 const DashboardRouter = require("./routers/DashboardRoutes");
 const StudyMaterialRouter = require("./routers/StudyMaterialRoutes");
 const HomeWorkRouter = require("./routers/HomeWorkRoutes");
+const VideoMeetingRouter = require("./routers/VideoMeetingRoutes")
 const cors = require("cors");
 const bodyParser = require("body-parser");
 // const upload = require("express-fileupload");
 // middlewares
+
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(express.json({ extended: false }));
@@ -31,12 +33,14 @@ app.use("/login", LoginRouter);
 app.use("/dashboard", DashboardRouter);
 app.use("/homework", HomeWorkRouter);
 app.use("/studymaterial", StudyMaterialRouter);
+app.use("/vm", VideoMeetingRouter)
 // setting port
 const PORT = process.env.PORT || 6969;
 
 app.listen(PORT, () => {
   console.log(`server is up and running at ${PORT}`);
 });
+
 
 // Creting an Object id With Mongoose
 // const mongoose = require("mongoose");

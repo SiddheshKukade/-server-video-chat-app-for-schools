@@ -3,15 +3,11 @@ const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
 const homeWorkSubmitSchema = new Schema({
-  whichHomeWork: {
-    type: String,
-    required: true,
-  },
-  emailWhoSubmitted: {
-    type: Array,
-    required: true,
-  },
-});
+         name : String  ,
+        email : String  ,
+        file : String  ,
+        hwCode : String
+ });
 
 const HomeWorkSubmits = new mongoose.model(
   "HomeWorkSubmits",

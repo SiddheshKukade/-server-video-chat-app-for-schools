@@ -5,6 +5,7 @@ const StudyMaterial = require("../models/StudyMaterial/studyMaterialSchema");
 const DashboardRouter = express.Router();
 const Users = require("../models/User/userSchema");
 const VideoMeeting = require("../models/VideoMeeting/videoMeetingSchema");
+
 DashboardRouter.post("/school", async (req, res) => {
   // try {
   //   const schoolres = await School.find({ referCode: schoolRefCode });
@@ -39,11 +40,13 @@ DashboardRouter.post("/school", async (req, res) => {
   }
 });
 
-DashboardRouter.post("/homeWork", async (req, res) => {
+DashboardRouter.post("/hw", async (req, res) => {
   try {
     console.log("Searching school  ", req.body);
     const result = await HomeWork.find({
-      referCode: req.body.referCode,
+      fromSchoolRef: req.body.fromSchoolRef,
+      subject : req.body.subject
+
     });
     console.log("THis is homework", result);
     res.send(result);
@@ -52,23 +55,26 @@ DashboardRouter.post("/homeWork", async (req, res) => {
   }
 });
 
-DashboardRouter.post("/studyMaterial", async (req, res) => {
+DashboardRouter.post("/sm", async (req, res) => {
   try {
     console.log("Searching school  ", req.body);
     const result = await StudyMaterial.find({
-      referCode: req.body.referCode,
+      fromSchoolRef : req.body.referCode,
+      subject : req.body.subject
     });
     console.log("THis is study Materil", result);
-    res.send(result);
+    res.status(200).send(result);
   } catch (err) {
     res.status(400).send(err);
   }
 });
-DashboardRouter.post("/videoMeeting", async (req, res) => {
+DashboardRouter.post("/vm", async (req, res) => {
   try {
-    console.log("Searching school  ", req.body);
+    console.log("Searching VM  ", req.body);
     const result = await VideoMeeting.find({
-      referCode: req.body.referCode,
+      fromSchoolRef: req.body.referCode,
+
+
     });
     console.log("THis is Video Meetingt datra", result);
     res.send(result);
